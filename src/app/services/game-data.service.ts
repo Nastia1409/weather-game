@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject as BehaviourSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { HttpService } from './http.service';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { HttpService } from './http.service';
 export class GameDataService {
   cities = ['Haifa', 'Tel Aviv', 'Sederot', 'Rosh Pinna', 'Tirat Karmel'];
   cityIndex: number = 0;
-  userGuessesSub: BehaviourSubject<Array<{ guess: number, rightAnswer: number }>> = new BehaviourSubject<Array<{ guess: number, rightAnswer: number }>>();
+  userGuessesSub: BehaviorSubject<Array<{ guess: number, rightAnswer: number }>> = new BehaviorSubject<Array<{ guess: number, rightAnswer: number }>>([]);
 
   constructor(private httpService: HttpService) { }
 
@@ -24,7 +24,9 @@ export class GameDataService {
 
   addGuess(cityName: string, guess: number): void {
     this.httpService.getCityData(cityName).subscribe((data: any) => {
-      this.userGuessesSub.next([{ guess, rightAnswer: data.main.temp }]);
+      const currVal = this.userGuessesSub.getValue();
+      currVal.push({ guess, rightAnswer: data.main.temp });
+      this.userGuessesSub.next(currVal);
     });
   }
 

@@ -3,7 +3,8 @@
 </header>
 
 <div>{{ cityName }}</div>
-<input [(value)]="currGuess" placeholder="your guess (celsius)">
+<input [(ngModel)]="currGuess" placeholder="your guess (celsius)">
 <button (click)="checkGuess()">check</button>
 
-<div *ngFor="let guess of gameDataService.userGuesses$ | async">{{guess}}</div>
+<div *ngFor="let guessData of (gameDataService.userGuesses$ | async)">{{guessData.guess + ' ' +guessData.rightAnswer}}
+</div>

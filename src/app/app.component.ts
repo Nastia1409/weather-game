@@ -21,6 +21,7 @@ export class AppComponent {
   }
 
   checkGuess() {
+    console.log(this.currGuess);
     this.gameDataService.addGuess(this.cityName, Number.parseFloat(this.currGuess));
     this.currGuess = '';
     this.cityName = this.gameDataService.cityName;
