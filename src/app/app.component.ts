@@ -13,9 +13,18 @@ export class AppComponent {
   title = 'weather-game';
   cityName: string;
   currGuess: string = '';
+  userMessage = '';
 
   constructor(public gameDataService: GameDataService) {
     this.cityName = this.gameDataService.cityName;
+
+    gameDataService.userWon$.subscribe(val => {
+      if (val === undefined) {
+        return;
+      }
+
+      this.userMessage = val ? 'You won!' : 'You lost';
+    });
   }
 
   checkGuess() {
@@ -23,5 +32,7 @@ export class AppComponent {
     this.currGuess = '';
     this.cityName = this.gameDataService.cityName;
   }
+
+
 
 }
