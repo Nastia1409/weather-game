@@ -5,10 +5,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
+import { TextBlockComponent } from './components/text-block/text-block.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TextBlockComponent
   ],
   imports: [
     BrowserModule,

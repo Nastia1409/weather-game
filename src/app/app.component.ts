@@ -14,16 +14,14 @@ export class AppComponent {
   cityName: string;
   currGuess: string = '';
 
-  constructor(private httpService: HttpService,
-    public gameDataService: GameDataService
-  ) {
+  constructor(public gameDataService: GameDataService) {
     this.cityName = this.gameDataService.cityName;
   }
 
   checkGuess() {
-    console.log(this.currGuess);
     this.gameDataService.addGuess(this.cityName, Number.parseFloat(this.currGuess));
     this.currGuess = '';
     this.cityName = this.gameDataService.cityName;
   }
+
 }

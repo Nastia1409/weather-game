@@ -6,5 +6,10 @@
 <input [(ngModel)]="currGuess" placeholder="your guess (celsius)">
 <button (click)="checkGuess()">check</button>
 
-<div *ngFor="let guessData of (gameDataService.userGuesses$ | async)">{{guessData.guess + ' ' +guessData.rightAnswer}}
+<div class="container">
+  <app-text-block class="right-space" *ngFor="let guessData of (gameDataService.userGuesses$ | async)"
+    [mainText]="guessData.userAnswer" [secondaryText]="guessData.rightAnswer"
+    [color]="guessData.equal    ? 'green' : 'red' "></app-text-block>
 </div>
+
+<div>{{(gameDataService.userWon$ | async)}} </div>

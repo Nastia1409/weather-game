@@ -1,0 +1,8 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.right-space {
+    margin-right: 10px;
+}
