@@ -1,0 +1,15 @@
+{
+    "/cities": {
+        "target": "http://bulk.openweathermap.org/sample/city.list.json.gz",
+        "secure": false,
+        "changeOrigin": true
+    },
+    "/weather": {
+        "target": "http://api.openweathermap.org/data/2.5/weather",
+        "secure": true,
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/weather": ""
+        }
+    }
+}
